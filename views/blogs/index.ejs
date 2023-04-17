@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('./partials/head.ejs') %>
+    <%- include('../partials/head.ejs') %>
 </head>
 <body>
 
-    <%- include('./partials/nav.ejs') %>
+    <%- include('../partials/nav.ejs') %>
     <h1>This is the home page</h1>
     <p>Welcome To This Page</p>
     <% if (blogs.length > 0) {  %>
@@ -16,6 +16,6 @@
     <% } else { %>
         <p>There is no blog.</p>
     <% } %>
-    <%- include('./partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>

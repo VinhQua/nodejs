@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <%- include('./partials/head.ejs') %>
+ <%- include('../partials/head.ejs') %>
 </head>
 <body>
-    <%- include('./partials/nav.ejs') %>
+    <%- include('../partials/nav.ejs') %>
     <h3><%= blog.title %></h3>
     <p><%= blog.body %></p>
-    <a onclick="deleteClick()" class="delete" data-doc="/delete-blog/<%= blog._id %>">Delete</a>
+    <a onclick="deleteClick()" class="delete" data-doc="/blog/delete/<%= blog._id %>"><span class="material-symbols-outlined">
+        delete
+        </span></a>
 
-    <%- include('./partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>
     <script>
         deleteBtn = document.querySelector('.delete');
         deleteClick =(e)=>{

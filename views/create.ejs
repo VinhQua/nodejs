@@ -5,10 +5,16 @@
 </head>
 <body>
     <%- include('./partials/nav.ejs') %>
-    <form action="" method="post">
-        <label for="title">Title: </label> <input type="text">
+    <form action="/add-blog" method="post">
+        <label for="title">Title: </label> <input name="title" type="text">
         <br>
         <label for=""></label>
+        <label for="snippet">Snippet: </label> <input name="snippet" type="text">
+        <br>
+        <label for=""></label>
+        <label for="body">Body: </label> <br> <textarea name="body" id="" cols="30" rows="10"></textarea>
+        <br>
+        <button type="submit">Create</button>
     </form>
     <%- include('./partials/footer.ejs') %>
     

@@ -36,6 +36,7 @@ app.get('/add-blog', (req, res) => {
 app.get('/all-blogs', (req, res) => {
     Blog.find().sort({createdAt: -1})
         .then((result)=> {
+            console.log(result)
             res.render('index',{title: 'All Blogs',blogs:result})
         })
         .catch((err)=> {console.log(err)})
@@ -50,13 +51,24 @@ app.post('/add-blog', (req, res) => {
         })
         .catch((err)=> {console.log(err)})
 })
-// app.get('/blog/:id', (req, res) => {
-//     Blog.findById(req.params.id)
-//         .then((result)=> {
-//             res.send(result)
-//         })
-//         .catch((err)=> {console.log(err)})
-// })
+app.delete('/delete-blog/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findByIdAndDelete(id)
+    .then((result)=> {{
+        res.json({redirect: '/all-blogs'})
+    }
+}).catch((err)=> {console.log(err)})
+})
+app.get('/blog/create', (req, res) => {
+    res.render('create',{title: 'Create A Blog'});
+})
+app.get('/blog/:id', (req, res) => {
+    Blog.findById(req.params.id)
+        .then((result)=> {
+            res.render('blog',{title: 'Blog',blog:result})
+        })
+        .catch((err)=> {console.log(err)})
+})
 
 app.get('/', (req, res) => {
     res.redirect('/all-blogs')
@@ -67,9 +79,7 @@ app.get('/about', (req, res) => {
 app.get('/about-me', (req, res) => {
     res.redirect('/about')
 })
-app.get('/blog/create', (req, res) => {
-    res.render('create',{title: 'Create A Blog'});
-})
+
 app.use((req,res)=>{
     res.render('404',{title: 'Page Not Found'});
 })

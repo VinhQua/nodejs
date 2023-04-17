@@ -10,7 +10,7 @@
     <p>Welcome To This Page</p>
     <% if (blogs.length > 0) {  %>
         <% blogs.map(blog=> {  %>
-            <h3><%= blog.title %></h3>
+            <a href="/blog/<%= blog._id %>"><h3><%= blog.title %></h3></a>
             <p><%= blog.snippet %></p>
         <% }) %>
     <% } else { %>
